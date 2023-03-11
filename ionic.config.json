@@ -1,0 +1,8 @@
+{
+  "name": "Vecindapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue",
+  "id": "37adfae4"
+}
