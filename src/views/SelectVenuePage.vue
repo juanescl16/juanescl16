@@ -3,8 +3,8 @@
         <ion-content class="ion-padding">
             <page-header></page-header>
             <page-title>Seleccione la sede</page-title>
-            <ion-list>
-                <ion-item v-for="venue in venues" :key="venue.id" :detail="true" @click.prevent="selectVenue(venue)">
+            <ion-list class="venue-list" :inset="true">
+                <ion-item v-for="venue in venues" :key="venue.id" :detail="true" @click.prevent="selectVenue(venue)" class="venue-list-item">
                     <ion-label class="ion-text-wrap venue-name">{{ venue.name }}</ion-label>
                 </ion-item>
             </ion-list>
@@ -54,7 +54,13 @@ onMounted(() => {
 .venue-name {
     font-weight: bold;
 }
-ion-item::part(native) {
+.venue-list {
+    background: none;
+}
+.venue-list-item {
+    --ion-item-background: none;
+}
+/* ion-item::part(native) {
     background: none;
     color: #fff;
 
@@ -63,5 +69,5 @@ ion-item::part(native) {
     border-width: 1px;
 
     border-radius: 10px;
-}
+} */
 </style>

@@ -8,6 +8,7 @@ import { IonicVue, IonPage, IonHeader, IonLabel, IonInput, IonButton, IonContent
 import PageHeader from '@/components/PageHeader.vue'
 import PageTitle from '@/components/PageTitle.vue'
 import TopBarLogo from '@/components/TopBarLogo.vue'
+import AppLogo from '@/components/AppLogo.vue'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css'
@@ -46,6 +47,7 @@ const app = createApp(App)
     .component('PageHeader', PageHeader)
     .component('PageTitle', PageTitle)
     .component('TopBarLogo', TopBarLogo)
+    .component('AppLogo', AppLogo)
 
 router.isReady().then(() => {
     app.mount('#app')

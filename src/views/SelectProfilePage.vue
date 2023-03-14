@@ -3,8 +3,15 @@
         <ion-content class="ion-padding">
             <page-header></page-header>
             <page-title>Seleccione el perfil</page-title>
-            <ion-list :inset="true">
-                <ion-item v-for="profile in profiles" :key="profile.id" href="#" :detail="true" @click.prevent="selectProfile(profile)">
+            <ion-list :inset="true" class="profile-list">
+                <ion-item
+                    v-for="profile in profiles"
+                    :key="profile.id"
+                    href="#"
+                    :detail="true"
+                    @click.prevent="selectProfile(profile)"
+                    class="profile-list-item"
+                >
                     <ion-label>{{ profile.name }}</ion-label>
                 </ion-item>
             </ion-list>
@@ -47,7 +54,10 @@ onMounted(() => {
 })
 </script>
 <style scoped>
-ion-content {
-    --background: '#7F0FBA';
+.profile-list {
+    background: none;
+}
+.profile-list-item {
+    --ion-item-background: none;
 }
 </style>

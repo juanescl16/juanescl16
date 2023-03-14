@@ -6,12 +6,13 @@
             </ion-toolbar>
         </ion-header> -->
 
-        <ion-content class="ion-padding">
-            <div class="header-logo">
+        <ion-content class="ion-paddingx">
+            <!-- <div class="header-logo">
                 <img src="/assets/images/logo_vecindapp.png" />
-            </div>
+            </div> -->
             <div class="login-fields-container">
                 <div class="login-inputs">
+                    <img src="/assets/images/logo_vecindapp.png" />
                     <ion-item class="login-input">
                         <ion-label position="floating">Usuario</ion-label>
                         <ion-input v-model="username" class=""></ion-input>
@@ -118,6 +119,8 @@ onMounted(() => {
     transform: rotate(-45deg);
     margin-top: 40px;
     margin-left: 40px;
+    text-align: center;
+    max-width: 80%;
 }
 
 .login-input {

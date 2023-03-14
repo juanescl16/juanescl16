@@ -1,31 +1,32 @@
 <template>
     <ion-page>
-        <ion-header>
+        <!-- <ion-header>
             <ion-toolbar>
                 <ion-title>
                     <top-bar-logo></top-bar-logo>
                 </ion-title>
             </ion-toolbar>
-        </ion-header>
+        </ion-header> -->
         <ion-content>
+            <app-logo></app-logo>
             <div class="menu">
                 <div class="ion-text-center ion-padding">
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion1'"> Comunicados </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion1'" icon="1_circulares"> Comunicados </option-button>
                     </div>
                     <div class="option-button-row double-button">
-                        <option-button @click="opcionSeleccionada = 'opcion2'"> Correspondencia </option-button>
-                        <option-button @click="opcionSeleccionada = 'opcion3'"> Zonas comunes </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion2'" icon="2_correspondencia"> Correspondencia </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion3'" icon="3_zonas_comunes"> Zonas comunes </option-button>
                     </div>
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'"> Visitas </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="4_visitas"> Visitas </option-button>
                     </div>
                     <div class="option-button-row double-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'"> PQR's </option-button>
-                        <option-button @click="opcionSeleccionada = 'opcion4'"> Consejo </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="5_pqrs"> PQRS </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="6_consejo"> Consejo </option-button>
                     </div>
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'"> Salir </option-button>
+                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="7_cerrar_sesion"> Salir </option-button>
                     </div>
                 </div>
             </div>
@@ -49,5 +50,8 @@ const opcionSeleccionada = ref('opcion1')
 }
 .double-button {
     justify-content: space-around;
+}
+.menu {
+    margin-top: 50px;
 }
 </style>
