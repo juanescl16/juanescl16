@@ -1,14 +1,15 @@
 <template>
     <ion-page>
-        <ion-header>
+        <!-- <ion-header>
             <ion-toolbar>
                 <ion-title>
                     <current-venue></current-venue>
                 </ion-title>
             </ion-toolbar>
-        </ion-header>
+        </ion-header> -->
 
         <ion-content class="ion-padding">
+            <app-logo></app-logo>
             <page-title>Comunicados</page-title>
             <ion-list v-if="!!newsletters" class="list">
                 <list-item v-for="newsletter in newsletters" :key="newsletter.id" @click="viewNewsletter(newsletter)" :detail="true">
