@@ -4,11 +4,14 @@ import router from './router'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-import { IonicVue, IonPage, IonHeader, IonLabel, IonInput, IonButton, IonContent, IonApp, IonItem } from '@ionic/vue'
+import { IonicVue, IonPage, IonHeader, IonLabel, IonInput, IonButton, IonContent, IonApp, IonItem, IonList, IonToolbar, IonTitle, IonIcon } from '@ionic/vue'
 import PageHeader from '@/components/PageHeader.vue'
 import PageTitle from '@/components/PageTitle.vue'
 import TopBarLogo from '@/components/TopBarLogo.vue'
 import AppLogo from '@/components/AppLogo.vue'
+import CurrentVenue from '@/components/CurrentVenue.vue'
+import ListItem from '@/components/ListItem.vue'
+import ItemIcon from '@/components/ItemIcon.vue'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css'
@@ -25,6 +28,8 @@ import '@ionic/vue/css/text-alignment.css'
 import '@ionic/vue/css/text-transformation.css'
 import '@ionic/vue/css/flex-utils.css'
 import '@ionic/vue/css/display.css'
+
+import { datetime, date } from './filters/filters'
 
 /* Theme variables */
 import './theme/variables.css'
@@ -43,11 +48,23 @@ const app = createApp(App)
     .component('IonButton', IonButton)
     .component('IonContent', IonContent)
     .component('IonApp', IonApp)
+    .component('IonList', IonList)
     .component('IonItem', IonItem)
+    .component('IonToolbar', IonToolbar)
+    .component('IonTitle', IonTitle)
     .component('PageHeader', PageHeader)
     .component('PageTitle', PageTitle)
     .component('TopBarLogo', TopBarLogo)
     .component('AppLogo', AppLogo)
+    .component('CurrentVenue', CurrentVenue)
+    .component('ListItem', ListItem)
+    .component('IonIcon', IonIcon)
+    .component('ItemIcon', ItemIcon)
+
+app.config.globalProperties.$filters = {
+    datetime,
+    date,
+}
 
 router.isReady().then(() => {
     app.mount('#app')

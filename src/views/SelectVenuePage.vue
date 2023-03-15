@@ -4,8 +4,8 @@
             <page-header></page-header>
             <page-title>Seleccione la sede</page-title>
             <ion-list class="venue-list" :inset="true">
-                <ion-item v-for="venue in venues" :key="venue.id" :detail="true" @click.prevent="selectVenue(venue)" class="venue-list-item">
-                    <ion-label class="ion-text-wrap venue-name">{{ venue.name }}</ion-label>
+                <ion-item v-for="person in people" :key="person.id" :detail="true" @click.prevent="selectPerson(person)" class="venue-list-item">
+                    <ion-label class="ion-text-wrap venue-name">{{ person.venue.name }}</ion-label>
                 </ion-item>
             </ion-list>
         </ion-content>
@@ -13,7 +13,7 @@
 </template>
 <script setup lang="ts">
 import { useVecindappApiClient } from '@/apiClients/vecindappApiClient'
-import { Venue } from '@/interfaces/interfaces'
+import { Person } from '@/interfaces/interfaces'
 import { IonList } from '@ionic/vue'
 
 import { useStore } from '@/stores/mainStore'
@@ -24,30 +24,32 @@ const store = useStore()
 const router = useRouter()
 const vecindappClient = useVecindappApiClient()
 
-const venues: Ref<Venue[]> = ref([])
+const people: Ref<Person[]> = ref([])
 
-const loadVenues = async (): Promise<void> => {
+const loadPeople = async (): Promise<void> => {
     const user = store.user
     const profile = store.profile
     if (!user || !profile) {
         router.push({ name: 'login' })
         return
     }
-    const { data }: { data: Venue[] } = await vecindappClient.get(`users/${user.id}/venues`, { profile_id: profile.id })
+    const { data }: { data: Person[] } = await vecindappClient.get(`users/${user.id}/people`, { profile_id: profile.id })
+    people.value = data
     if (data.length === 1) {
-        selectVenue(data[0])
+        const person = data[0]
+        selectPerson(person)
         return
     }
-    venues.value = data
 }
 
-const selectVenue = (venue: Venue) => {
-    store.$patch({ venue })
+const selectPerson = (person: Person) => {
+    const venue = person.venue
+    store.$patch({ person, venue })
     router.push({ name: 'dashboardPage' })
 }
 
 onMounted(() => {
-    loadVenues()
+    loadPeople()
 })
 </script>
 <style scoped>

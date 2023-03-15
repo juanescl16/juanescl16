@@ -12,21 +12,21 @@
             <div class="menu">
                 <div class="ion-text-center ion-padding">
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion1'" icon="1_circulares"> Comunicados </option-button>
+                        <option-button @click="goTo('newslettersPage')" icon="1_circulares"> Comunicados </option-button>
                     </div>
                     <div class="option-button-row double-button">
-                        <option-button @click="opcionSeleccionada = 'opcion2'" icon="2_correspondencia"> Correspondencia </option-button>
-                        <option-button @click="opcionSeleccionada = 'opcion3'" icon="3_zonas_comunes"> Zonas comunes </option-button>
+                        <option-button @click="goTo('mailboxPage')" icon="2_correspondencia"> Correspondencia </option-button>
+                        <option-button @click="goTo('facilitiesPage')" icon="3_zonas_comunes"> Zonas comunes </option-button>
                     </div>
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="4_visitas"> Visitas </option-button>
+                        <option-button @click="goTo('visitsPage')" icon="4_visitas"> Visitas </option-button>
                     </div>
                     <div class="option-button-row double-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="5_pqrs"> PQRS </option-button>
-                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="6_consejo"> Consejo </option-button>
+                        <option-button @click="goTo('petitionsPage')" icon="5_pqrs"> PQRS </option-button>
+                        <option-button @click="goTo('councilPage')" icon="6_consejo"> Consejo </option-button>
                     </div>
                     <div class="option-button-row middle-button">
-                        <option-button @click="opcionSeleccionada = 'opcion4'" icon="7_cerrar_sesion"> Salir </option-button>
+                        <option-button @click="closeSession() && goTo('loginPage')" icon="7_cerrar_sesion"> Salir </option-button>
                     </div>
                 </div>
             </div>
@@ -36,10 +36,17 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { IonTitle, IonIcon, IonToolbar } from '@ionic/vue'
 import OptionButton from '@/components/OptionButton.vue'
+import { useRouter } from 'vue-router'
 
-const opcionSeleccionada = ref('opcion1')
+const router = useRouter()
+
+const goTo = (page: string) => router.push({ name: page })
+const closeSession = (): boolean => {
+    localStorage.clear()
+    router.push({ name: 'loginPage' })
+    return true
+}
 </script>
 <style scoped>
 .option-button-row {

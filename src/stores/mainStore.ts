@@ -7,6 +7,7 @@ const useStore = defineStore('main', {
         venue: null,
         people: null,
         profile: null,
+        person: null,
     }),
     persist: true,
 })

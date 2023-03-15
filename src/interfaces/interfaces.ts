@@ -3,6 +3,7 @@ export interface State {
     venue: Venue | null
     people: Person[] | null
     profile: Profile | null
+    person: Person | null
 }
 
 export interface Venue {
@@ -52,4 +53,30 @@ export interface Profile {
     id: number
     name: string
     slug: string
+}
+
+export interface Newsletter {
+    id: number
+    title: string
+    description: string
+    created_at: Date
+    files?: NewsletterFile[]
+}
+
+export interface NewsletterFile {
+    id: number
+    url: string
+    name: string
+}
+
+export interface Paginated<T> {
+    data: Array<T>
+    meta: {
+        current_page: number
+        from: number
+        last_page: number
+        per_page: number
+        to: number
+        total: number
+    }
 }
