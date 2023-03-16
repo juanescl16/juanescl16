@@ -12,6 +12,7 @@ import AppLogo from '@/components/AppLogo.vue'
 import CurrentVenue from '@/components/CurrentVenue.vue'
 import ListItem from '@/components/ListItem.vue'
 import ItemIcon from '@/components/ItemIcon.vue'
+import BackButton from '@/components/BackButton.vue'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css'
@@ -29,10 +30,11 @@ import '@ionic/vue/css/text-transformation.css'
 import '@ionic/vue/css/flex-utils.css'
 import '@ionic/vue/css/display.css'
 
-import { datetime, date } from './filters/filters'
+import { datetime, date, replaceURLWithHTML } from './filters/filters'
 
 /* Theme variables */
 import './theme/variables.css'
+import './theme/common.css'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
@@ -60,10 +62,12 @@ const app = createApp(App)
     .component('ListItem', ListItem)
     .component('IonIcon', IonIcon)
     .component('ItemIcon', ItemIcon)
+    .component('BackButton', BackButton)
 
 app.config.globalProperties.$filters = {
     datetime,
     date,
+    replaceURLWithHTML,
 }
 
 router.isReady().then(() => {

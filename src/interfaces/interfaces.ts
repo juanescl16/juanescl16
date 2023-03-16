@@ -6,6 +6,10 @@ export interface State {
     person: Person | null
 }
 
+export interface TempState {
+    newsletter: Newsletter | null
+}
+
 export interface Venue {
     id: number
     name: string
@@ -60,7 +64,7 @@ export interface Newsletter {
     title: string
     description: string
     created_at: Date
-    files?: NewsletterFile[]
+    files: NewsletterFile[]
 }
 
 export interface NewsletterFile {

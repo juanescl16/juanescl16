@@ -6,3 +6,8 @@ export const datetime = (val: string): string => {
 export const date = (val: string): string => {
     return new Date(val).toLocaleDateString()
 }
+
+export const replaceURLWithHTML = (text: string) => {
+    const exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gi
+    return text.replace(exp, '<a href="$1" target="_blank">$1</a>')
+}

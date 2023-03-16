@@ -1,0 +1,22 @@
+.text-center {
+    text-align: center;
+}
+
+.v-card {
+    --background: linear-gradient(#9d62f5, #6049cd);
+    color: white;
+}
+
+.color-white {
+    color: white !important;
+}
+.text-white {
+    color: white !important;
+}
+ion-toolbar {
+    --ion-toolbar-background: var(--ion-background-color);
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}

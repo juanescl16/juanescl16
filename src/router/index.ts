@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
                 name: 'newslettersPage',
                 component: () => import('@/views/NewslettersPage.vue'),
             },
+            {
+                path: 'newsletter-detail',
+                name: 'newsletterDetailPage',
+                component: () => import('@/views/NewsletterDetailPage.vue'),
+            },
         ],
     },
     {

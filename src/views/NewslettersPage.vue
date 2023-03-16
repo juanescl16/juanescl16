@@ -2,9 +2,10 @@
     <ion-page>
         <!-- <ion-header>
             <ion-toolbar>
-                <ion-title>
-                    <current-venue></current-venue>
-                </ion-title>
+                <ion-buttons slot="start">
+                    <back-button></back-button>
+                </ion-buttons>
+                <current-venue slot="primary"></current-venue>
             </ion-toolbar>
         </ion-header> -->
 
@@ -47,8 +48,12 @@ import { IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/vue'
 import { attachOutline, documentTextOutline } from 'ionicons/icons'
 import { PaginatorInit } from '@/initializers/initializers'
 import { IonInfiniteScrollCustomEvent } from '@ionic/core'
+import { useTempStore } from '@/stores/tempStore'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const store = useStore()
+const tempStore = useTempStore()
 const vecindappClient = useVecindappApiClient()
 const page: Ref<number> = ref(1)
 const newslettersData: Ref<Paginated<Newsletter>> = ref(PaginatorInit)
@@ -57,7 +62,8 @@ const newsletters: Ref<Newsletter[]> = ref([])
 const loadingComplete = computed(() => newslettersData.value.meta.last_page === page.value)
 
 const viewNewsletter = (newsletter: Newsletter): void => {
-    //
+    tempStore.$patch({ newsletter })
+    router.push({ name: 'newsletterDetailPage' })
 }
 
 const loadNewsletters = async (): Promise<void> => {

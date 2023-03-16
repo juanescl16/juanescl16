@@ -3,7 +3,7 @@
         <!-- <ion-header>
             <ion-toolbar>
                 <ion-title>
-                    <top-bar-logo></top-bar-logo>
+                    <current-venue></current-venue>
                 </ion-title>
             </ion-toolbar>
         </ion-header> -->
