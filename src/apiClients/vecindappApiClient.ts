@@ -1,7 +1,6 @@
 import { AxiosResponse } from './../global.d'
-import { useStore } from './../stores/mainStore'
 import Axios, { InternalAxiosRequestConfig } from 'axios'
-const store = useStore()
+// const store = useStore()
 
 const axios = Axios.create({
     baseURL: process.env.VUE_APP_VECINDAPP_API_URL,
@@ -13,8 +12,9 @@ const axios = Axios.create({
 
 axios.interceptors.request.use(
     (config: InternalAxiosRequestConfig<void>) => {
-        if (null !== store.user) {
-            config.headers['Authorization'] = `Bearer ${store.user.api_token}`
+        const token = localStorage.getItem('vecindapp_api_token')
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`
         }
         return config
     },

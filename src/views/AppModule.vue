@@ -21,7 +21,7 @@
     </ion-app>
 </template>
 <script setup lang="ts">
-import { IonRouterOutlet } from '@ionic/vue'
+import { IonRouterOutlet, IonButtons } from '@ionic/vue'
 import { personCircleOutline, logOutOutline } from 'ionicons/icons'
 import { Ref, ref } from 'vue'
 import { useRoute } from 'vue-router'

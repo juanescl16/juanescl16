@@ -1,3 +1,4 @@
+import { useVecindappApiClient } from './../apiClients/vecindappApiClient'
 import { State } from '../interfaces/interfaces'
 import { defineStore } from 'pinia'
 
@@ -9,6 +10,9 @@ const useStore = defineStore('main', {
         profile: null,
         person: null,
     }),
+    getters: {
+        capabilities: (state) => state.person?.capabilities ?? [],
+    },
     persist: true,
 })
 

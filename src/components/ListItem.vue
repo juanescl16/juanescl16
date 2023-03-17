@@ -1,5 +1,5 @@
 <template>
-    <IonItem>
+    <IonItem class="list-item">
         <div class="icon">
             <slot name="start"></slot>
         </div>
@@ -9,6 +9,7 @@
         <div class="helper">
             <slot name="helper"></slot>
         </div>
+        <slot name="end"></slot>
     </IonItem>
 </template>
 <script setup lang="ts">
@@ -21,5 +22,8 @@ import { Ref, ref } from 'vue'
 }
 .icon {
     margin: 0 13px;
+}
+.list-item {
+    margin: 10px 0;
 }
 </style>

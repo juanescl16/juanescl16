@@ -34,6 +34,7 @@ export interface Person {
     email: string
     structures?: Structure[]
     venue: Venue
+    capabilities?: string[]
 }
 
 export interface User {
@@ -83,4 +84,22 @@ export interface Paginated<T> {
         to: number
         total: number
     }
+}
+
+export interface Facility {
+    id: number
+    name: string
+    slug: string
+    for_rent: boolean
+    rent_value?: number
+    deposit?: number
+    out_of_service?: boolean
+    reserve_days_until?: number
+    maximun_capacity: number
+    simultaneous_reservations: number
+    reservation_strip: number
+    start_date?: Date
+    end_date?: Date
+    restrict_defaulters: boolean
+    description: string
 }

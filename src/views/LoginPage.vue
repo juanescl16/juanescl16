@@ -68,10 +68,11 @@ const login = async (): Promise<void> => {
             password: password.value,
         })
 
-        const { jwtToken, profile, venue } = data
+        const { jwtToken, profile, venue, apiToken } = data
         if (jwtToken) {
             localStorage.setItem('auth:jwt_token', jwtToken)
             const user = jwt_decode(jwtToken) as User
+            !!apiToken && localStorage.setItem('vecindapp_api_token', apiToken)
             store.$patch({
                 user,
             })
