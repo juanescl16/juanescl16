@@ -12,6 +12,9 @@
         <ion-content class="ion-padding">
             <app-logo></app-logo>
             <page-title>Comunicados</page-title>
+            <div class="text-center">
+                <ion-button v-if="canCreateNewsletters" @click="router.push({ name: 'newsletterFormPage' })">Nuevo Comunicado</ion-button>
+            </div>
             <ion-list v-if="!!newsletters" class="list">
                 <list-item v-for="newsletter in newsletters" :key="newsletter.id" @click="viewNewsletter(newsletter)" :detail="true">
                     <template #start>
@@ -50,6 +53,7 @@ import { PaginatorInit } from '@/initializers/initializers'
 import { IonInfiniteScrollCustomEvent } from '@ionic/core'
 import { useTempStore } from '@/stores/tempStore'
 import { useRouter } from 'vue-router'
+import { userCan } from '@/security/security'
 
 const router = useRouter()
 const store = useStore()
@@ -58,6 +62,7 @@ const vecindappClient = useVecindappApiClient()
 const page: Ref<number> = ref(1)
 const newslettersData: Ref<Paginated<Newsletter>> = ref(PaginatorInit)
 const newsletters: Ref<Newsletter[]> = ref([])
+const canCreateNewsletters: Ref<boolean> = ref(userCan('enviar-circulares'))
 
 const loadingComplete = computed(() => newslettersData.value.meta.last_page === page.value)
 

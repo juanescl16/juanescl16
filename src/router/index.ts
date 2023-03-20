@@ -46,6 +46,11 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/views/NewsletterDetailPage.vue'),
             },
             {
+                path: 'newsletter-form',
+                name: 'newsletterFormPage',
+                component: () => import('@/views/NewsletterFormPage.vue'),
+            },
+            {
                 path: 'facilities',
                 name: 'facilitiesPage',
                 component: () => import('@/views/FacilitiesPage.vue'),
