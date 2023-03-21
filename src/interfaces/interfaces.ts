@@ -103,3 +103,11 @@ export interface Facility {
     restrict_defaulters: boolean
     description: string
 }
+
+export interface ResultBag<T> {
+    status: boolean
+    msg: string
+    result: T
+    info: any
+    trace: any
+}

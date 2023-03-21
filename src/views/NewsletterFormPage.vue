@@ -48,14 +48,15 @@
 </template>
 
 <script setup lang="ts">
-import { IonNote, IonTextarea, toastController } from '@ionic/vue'
-import { attach, attachOutline, documentAttachOutline, paperPlaneOutline, saveOutline, trashOutline } from 'ionicons/icons'
+import { IonNote, IonTextarea } from '@ionic/vue'
+import { attachOutline, documentAttachOutline, saveOutline, trashOutline } from 'ionicons/icons'
 import { ref, toRefs } from 'vue'
 import { round } from '@/filters/filters'
 import { useVecindappApiClient } from '@/apiClients/vecindappApiClient'
 import { useStore } from '@/stores/mainStore'
 import { Newsletter } from '@/interfaces/interfaces'
 import { useToastr } from '@/utils/toastr'
+import { ResultBag } from '@/interfaces/interfaces'
 
 const title = ref<string>('')
 const content = ref<string>('')
@@ -106,7 +107,10 @@ const create = async (): Promise<void> => {
         !!user.value && formData.append('user_id', `${user.value.id}`)
         files.value.map((file: File) => formData.append('files[]', file))
 
-        const { data }: { data: Newsletter } = await vecindappClient.post('newsletters', formData)
+        const { data }: { data: ResultBag<Newsletter> } = await vecindappClient.post('newsletters', formData)
+        if (data.status) {
+            //TODO: mostrar mensaje de confirmación para enviar el comunicado
+        }
     } catch (error) {
         console.log({ error })
 
