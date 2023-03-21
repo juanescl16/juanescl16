@@ -68,22 +68,17 @@ const login = async (): Promise<void> => {
             password: password.value,
         })
 
-        const { jwtToken, profile, venue, apiToken } = data
+        const { jwtToken, profile, venue, apiToken, person } = data
         if (jwtToken) {
             localStorage.setItem('auth:jwt_token', jwtToken)
             const user = jwt_decode(jwtToken) as User
             !!apiToken && localStorage.setItem('vecindapp_api_token', apiToken)
             store.$patch({
                 user,
+                person,
+                venue,
+                profile,
             })
-
-            if (user.profiles_count === 1 && !!profile) {
-                store.$patch({ profile })
-            }
-
-            if (user.venues_count === 1 && !!venue) {
-                store.$patch({ venue })
-            }
 
             if (user.profiles_count > 1) {
                 router.push({ name: 'selectProfilePage' })
@@ -94,6 +89,8 @@ const login = async (): Promise<void> => {
                 router.push({ name: 'selectVenuePage' })
                 return
             }
+
+            router.push({ name: 'dashboardPage' })
         }
     } catch (error) {
         console.log({ error })
