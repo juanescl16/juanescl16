@@ -8,6 +8,7 @@ export interface State {
 
 export interface TempState {
     newsletter: Newsletter | null
+    petition: Petition | null
 }
 
 export interface Venue {
@@ -116,6 +117,20 @@ export interface PetitionTopic {
     name: string
     slug: string
     petition_type_id: number
+}
+
+export interface Petition {
+    id: number
+    person_id: number
+    petition_status_id: number
+    petition_type_id: number
+    petition_topic_id: number
+    name: string
+    description: string
+    satisfied?: string
+    code?: string
+    created_at?: Date
+    updated_at?: Date
 }
 
 export interface ResultBag<T> {

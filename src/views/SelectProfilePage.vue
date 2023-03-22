@@ -43,7 +43,7 @@ const selectProfile = (profile: Profile): void => {
     store.$patch({ profile })
     const venue = store.venue
     if (venue) {
-        router.push({ name: 'dashboard' })
+        router.push({ name: 'dashboardPage' })
         return
     }
     router.push({ name: 'selectVenuePage' })
