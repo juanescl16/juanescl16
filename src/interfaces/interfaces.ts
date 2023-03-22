@@ -104,6 +104,20 @@ export interface Facility {
     description: string
 }
 
+export interface PetitionType {
+    id: number
+    name: string
+    slug: string
+    description: string
+}
+
+export interface PetitionTopic {
+    id: number
+    name: string
+    slug: string
+    petition_type_id: number
+}
+
 export interface ResultBag<T> {
     status: boolean
     msg: string

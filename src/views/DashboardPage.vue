@@ -26,7 +26,7 @@
                         <option-button @click="goTo('councilPage')" icon="6_consejo"> Consejo </option-button>
                     </div>
                     <div class="option-button-row middle-button">
-                        <option-button @click="closeSession() && goTo('loginPage')" icon="7_cerrar_sesion"> Salir </option-button>
+                        <option-button @click="closeSession() && goTo('login')" icon="7_cerrar_sesion"> Salir </option-button>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ const router = useRouter()
 const goTo = (page: string) => router.push({ name: page })
 const closeSession = (): boolean => {
     localStorage.clear()
-    router.push({ name: 'loginPage' })
+    router.push({ name: 'login' })
     return true
 }
 </script>
