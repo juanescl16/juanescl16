@@ -108,29 +108,53 @@ export interface Facility {
 export interface PetitionType {
     id: number
     name: string
-    slug: string
-    description: string
+    slug?: string
+    description?: string
 }
 
 export interface PetitionTopic {
     id: number
     name: string
-    slug: string
-    petition_type_id: number
+    slug?: string
+    petition_type_id?: number
+}
+
+export interface PetitionStatus {
+    id: number
+    name: string
+    slug?: string
+    description?: string
 }
 
 export interface Petition {
     id: number
     person_id: number
-    petition_status_id: number
-    petition_type_id: number
-    petition_topic_id: number
     name: string
     description: string
     satisfied?: string
     code?: string
     created_at?: Date
     updated_at?: Date
+    files: PetitionFile[]
+    petition_type: PetitionType
+    petition_topic: PetitionTopic
+    petition_status: PetitionStatus
+    comments: PetitionComment[]
+}
+
+export interface PetitionFile {
+    id: number
+    url: string
+    name: string
+    comment?: string
+}
+
+export interface PetitionComment {
+    id: number
+    person: string
+    status: string
+    comment?: string
+    created_at?: Date
 }
 
 export interface ResultBag<T> {

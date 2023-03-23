@@ -65,6 +65,11 @@ const routes: Array<RouteRecordRaw> = [
                 name: 'petitionFormPage',
                 component: () => import('@/views/PetitionFormPage.vue'),
             },
+            {
+                path: 'petition-detail',
+                name: 'petitionDetailPage',
+                component: () => import('@/views/PetitionDetailPage.vue'),
+            },
         ],
     },
     {

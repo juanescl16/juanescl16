@@ -4,9 +4,7 @@
             <app-logo></app-logo>
             <page-title>PQRS</page-title>
             <div class="text-center">
-                <ion-button @click="router.push({ name: 'newsletterFormPage' })">Nuevo +</ion-button>
-                <ion-button @click="router.push({ name: 'petitionFormPage' })">Nuevo +</ion-button>
-                <!-- <ion-button v-if="canCreatePetitions" @click="router.push({ name: 'newsletterFormPage' })">Nuevo +</ion-button> -->
+                <ion-button v-if="canCreatePetitions" @click="router.push({ name: 'petitionFormPage' })">Nuevo +</ion-button>
             </div>
             <ion-list v-if="!!petitions" class="list">
                 <list-item v-for="petition in petitions" :key="petition.id" @click="viewPetition(petition)" :detail="true">
@@ -29,6 +27,9 @@
                     <!-- </ion-label> -->
                 </list-item>
             </ion-list>
+            <ion-infinite-scroll @ionInfinite="loadMore" :disabled="loadingComplete">
+                <ion-infinite-scroll-content loading-text="Cargando..." loading-spinner="bubbles"></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
         </ion-content>
     </ion-page>
 </template>
@@ -37,7 +38,7 @@
 import { useVecindappApiClient } from '@/apiClients/vecindappApiClient'
 import { useStore } from '@/stores/mainStore'
 import { Ref, ref, onMounted, computed } from 'vue'
-import { Newsletter, Paginated, Petition } from '../interfaces/interfaces'
+import { Paginated, Petition } from '../interfaces/interfaces'
 import { IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/vue'
 import { attachOutline, documentTextOutline } from 'ionicons/icons'
 import { PaginatorInit } from '@/initializers/initializers'
